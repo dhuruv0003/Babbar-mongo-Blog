@@ -2,7 +2,7 @@ const mongoose=require('mongoose')
 
 
 
-const CommentSchemma=mongoose.Schema({
+const CommentSchemma=new mongoose.Schema({
     // Konsi post par comment kar rahe ho
 
     post:{ 
