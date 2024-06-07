@@ -31,9 +31,14 @@ exports.commentController=async(req,res)=>{
 
 // $push is used to push data into an array and $pull is used to delete data from array 
         const updatedPost=await PostModel.findByIdAndUpdate(post,{$push:{comments:savecomment._id}},{new:true})
+        .populate("comments")// currently comments array consists of several _id,but we want actual comment document, so we use populate method  
+        .exec()
+
 //  new:true is used to get the updated document after updattion 
 
 // push the id of savecomment into comments array of PostModel
+
+
 
         res.status(200).json({
             success:true,
