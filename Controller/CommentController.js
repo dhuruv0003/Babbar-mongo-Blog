@@ -38,16 +38,15 @@ exports.commentController=async(req,res)=>{
 
 // push the id of savecomment into comments array of PostModel
 
-
-
         res.status(200).json({
             success:true,
-            data:comment,
-
+            post:updatedPost,
         })
-
-
     } catch (error) {
-        
+        res.status(500).json({
+            success:false,
+            post:"No Post Found",
+            error:console.log(error.message)
+        })
     }
 }
