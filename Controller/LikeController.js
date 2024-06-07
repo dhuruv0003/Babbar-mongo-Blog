@@ -27,10 +27,30 @@ exports.likeController=async (req,res)=>{
     }
 }
 
-// exports.UnlikeController=async(req,res)=>{
-//     try {
-//         const 
-//     } catch (error) {
-        
-//     }
-// }
+exports.UnlikeController=async(req,res)=>{
+    try {
+        // post represesnts the id of post and like represents the id of person who liked 
+
+        const {post,like}=req.body;
+
+        //   find and delete the like from likes  collection 
+
+        const deletedLike=await LikeModel.findOneAndDelete({_id:like,post:post})
+
+        // Now update the post model and remove like from like array
+
+        const updatedPost=await PostModel.findByIdAndUpdate(post,{$pull:{likes:deletedLike._id}},{new:true})
+
+        res.status(200).json({
+            success:true,
+            deletedPost:updatedPost
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success:false,
+            deletdPost:"Post Cannot be deleted"
+        })
+
+    }
+}
