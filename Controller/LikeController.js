@@ -9,7 +9,7 @@ exports.likeController=async (req,res)=>{
             post,user
         })
 //post represents the id of post made
-        const updatedPost=PostModel.findByIdAndUpdate(post,{$push:{likes:likedPost._id}},{new:true})
+        const updatedPost=await PostModel.findByIdAndUpdate(post,{$push:{likes:likedPost._id}},{new:true})
         .populate("likes")
         .exec();
 
@@ -27,10 +27,10 @@ exports.likeController=async (req,res)=>{
     }
 }
 
-exports.UnlikeController=async(req,res)=>{
-    try {
-        const 
-    } catch (error) {
+// exports.UnlikeController=async(req,res)=>{
+//     try {
+//         const 
+//     } catch (error) {
         
-    }
-}
+//     }
+// }
