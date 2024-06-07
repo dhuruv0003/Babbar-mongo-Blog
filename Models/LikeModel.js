@@ -12,4 +12,6 @@ const LikeSchema= new mongoose.Schema({
 
 })
 
+// Here we have exported the model by the name of Like
+
 module.exports=mongoose.model("Like",LikeSchema)
