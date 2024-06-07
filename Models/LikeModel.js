@@ -9,5 +9,7 @@ const LikeSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    
+
 })
+
+module.exports=mongoose.model("Like",LikeSchema)
