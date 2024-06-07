@@ -1,5 +1,14 @@
 const PostModel=require('../Models/PostModel')
 
-exports.PostController=async(req,res)=>{
-    res.send('This is Ypour Dummy Page')
+exports.CreatePost=async(req,res)=>{
+    try {
+        const {title,body}=req.body;
+        const post=new PostModel({
+            title,body
+        })
+        const savedPost=await post.save()
+    } catch (error) {
+        
+    }
 }
+   
