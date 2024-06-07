@@ -7,7 +7,7 @@ const router=express.Router();
 
 const { commentController } = require('../Controller/CommentController');
 
-const { CreatePost } = require('../Controller/PostController');
+const { CreatePost, fetchPost } = require('../Controller/PostController');
 
 
 
@@ -16,6 +16,8 @@ const { CreatePost } = require('../Controller/PostController');
 router.post("/comment/create",commentController)
 
 router.post('/posts/create',CreatePost)
+
+router.get("/posts",fetchPost)
 
  // Export the router
  module.exports=router;

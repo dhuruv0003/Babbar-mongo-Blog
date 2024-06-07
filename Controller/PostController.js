@@ -1,4 +1,6 @@
 const PostModel=require('../Models/PostModel')
+const LikeModel=require('../Models/LikeModel')
+const CommentModel=require('../Models/CommentModel')
 
 exports.CreatePost=async(req,res)=>{
     try {
@@ -24,3 +26,18 @@ exports.CreatePost=async(req,res)=>{
     }
 }
    
+exports.fetchPost=async(req,res)=>{
+    try {
+        const findpost = await PostModel.find({}).populate("comments").populate("likes").exec()
+        res.status(200).json({
+            success:true,
+            post:findpost
+        }) 
+    } catch (error) {
+        res.status(200).json({
+            success:false,
+            post:"No post Found ",
+            message:console.log(error.message)
+        }) 
+    }
+}
